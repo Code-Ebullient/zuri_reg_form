@@ -1,7 +1,7 @@
 <?php
 
 extract($_REQUEST);//Requesting to extract the input
-$file=fopen("userdata.csv", "a");//opens the file to write ONLY
+$file=fopen("userdata.csv", "w");//opens the file to write ONLY
 
 fwrite($file, "Name: ");
 fwrite($file, $name . "\n");//Takes the inputted info on name input
