@@ -20,9 +20,6 @@ fwrite($file, $country . "\n");//Takes the inputted info on country input
 fclose($file);
 
 
-//print_r (file_get_contents("userdata.csv"));
-$file_to_read = fopen('userdata.csv', 'r');
- 
 function csvToArray($csvFile){
  
     $file_to_read = fopen($csvFile, 'r');
@@ -44,7 +41,6 @@ $csv = csvToArray($csvFile);
 echo '<pre>';
 print_r($csv);
 echo '</pre>';
-
 
 ?>
 
