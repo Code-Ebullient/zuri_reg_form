@@ -19,25 +19,7 @@ fwrite($file, "Country: ");
 fwrite($file, $country . "\n");//Takes the inputted info on country input
 fclose($file);
 
-
-function csvToArray($csvFile){
- 
-    $file_to_read = fopen($csvFile, 'r');
- 
-    while (!feof($file_to_read) ) {
-        $lines[] = fgetcsv($file_to_read, 1000, ',');
- 
-    }
- 
-    fclose($file_to_read);
-    return $lines;
-}
- 
-//read the csv file into an array
-$csvFile = 'userdata.csv';
-$csv = csvToArray($csvFile);
- 
-//render the array with print_r
+$csv = array_map('str_getcsv', file('userdata.csv'));
 echo '<pre>';
 print_r($csv);
 echo '</pre>';
