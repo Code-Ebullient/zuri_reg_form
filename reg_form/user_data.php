@@ -23,20 +23,27 @@ fclose($file);
 //print_r (file_get_contents("userdata.csv"));
 $file_to_read = fopen('userdata.csv', 'r');
  
-if($file_to_read !== FALSE){
-     
-    echo "<table>\n";
-    while(($data = fgetcsv($file_to_read, 100, ',')) !== FALSE){
-        echo "<tr>";
-        for($i = 0; $i < count($data); $i++) {
-            echo "<td>".$data[$i]."</td>";
-        }
-        echo "</tr>\n";
+function csvToArray($csvFile){
+ 
+    $file_to_read = fopen($csvFile, 'r');
+ 
+    while (!feof($file_to_read) ) {
+        $lines[] = fgetcsv($file_to_read, 1000, ',');
+ 
     }
-    echo "</table>\n";
  
     fclose($file_to_read);
+    return $lines;
 }
+ 
+//read the csv file into an array
+$csvFile = 'userdata.csv';
+$csv = csvToArray($csvFile);
+ 
+//render the array with print_r
+echo '<pre>';
+print_r($csv);
+echo '</pre>';
 
 
 ?>
